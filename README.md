@@ -1,3 +1,2 @@
-# bruhCastingV2
-made it out tha mud
-
+# JavaFX raycasting demo
+To be added: Wall texturing and sprite movement behaviour.
