@@ -1,4 +1,4 @@
 # JavaFX raycasting demo
 To be added: Wall texturing and sprite movement behaviour.
 
-https://github.com/johnson4500/raycasting-demo/assets/133929633/ecf7e548-65bc-4cc0-8a1a-60005fb964b5
+![ss](https://github.com/johnson4500/raycasting-demo/assets/133929633/f9c0c2cd-38c2-4a31-ad31-1fb63f3ea89c)
