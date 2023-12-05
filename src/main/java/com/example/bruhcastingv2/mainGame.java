@@ -30,7 +30,6 @@ public class mainGame extends Application {
         stage.setScene(scene);
         stage.show();
         root.getChildren().add(player);
-        root.getChildren().add(imageView);
 
         lastNanoTime = System.nanoTime();
         // Start the game loop using AnimationTimer
@@ -54,7 +53,7 @@ public class mainGame extends Application {
     public void update(Scene scene, double deltaTime, GraphicsContext gc, AnchorPane root) {
         Player.update(scene, deltaTime);
         rayCasting.rayCast(gc);
-        spriteObject.getSprite(root);
+        spriteObject.getSprite(gc);
     }
 
     public void draw(AnchorPane root, GraphicsContext gc, Circle player) {
