@@ -3,6 +3,7 @@ package com.example.bruhcastingv2;
 import static com.example.bruhcastingv2.settings.*;
 
 import javafx.scene.Group;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +16,7 @@ import java.io.FileInputStream;
 public class spriteO {
     double spriteX = 6;
     double spriteY = 6;
-    static Image textureImage = new Image(new File("C:\\Users\\johns\\Downloads\\goodness.png").toURI().toString());
+    static Image textureImage = new Image(new File("src\\main\\resources\\com\\example\\bruhcastingv2\\goodness.png").toURI().toString());
     public static ImageView imageView = new ImageView(textureImage);
     int width = (int) textureImage.getWidth();
     int height = (int) textureImage.getHeight();
@@ -28,7 +29,7 @@ public class spriteO {
     double screenX = 0;
     double distance = 1;
 
-    public void spriteProjection(double distance, double screenX) {
+    public void spriteProjection(double distance, double screenX, GraphicsContext gc) {
         double projection = screenDistance / distance;
         double projectionWidth = projection * ratio;
         double projectionHeight = projection;
@@ -37,14 +38,15 @@ public class spriteO {
         double positionX = screenX - spriteHalfWidth;
         double positionY = HALF_HEIGHT - Math.floor(projectionHeight / 2);
 
-        imageView.setFitHeight(projectionHeight);
-        imageView.setFitWidth(projectionWidth);
-        imageView.setX(positionX);
-        imageView.setY(positionY);
-        imageView.setPreserveRatio(true);
+//        imageView.setFitHeight(projectionHeight);
+//        imageView.setFitWidth(projectionWidth);
+//        imageView.setX(positionX);
+//        imageView.setY(positionY);
+//        imageView.setPreserveRatio(true);
+        gc.drawImage(textureImage, positionX, positionY, projectionHeight, projectionWidth);
     }
 
-    public void getSprite(AnchorPane root) {
+    public void getSprite(GraphicsContext gc) {
         dx = spriteX - playerX;
         dy = spriteY - playerY;
         theta = Math.atan2(dy, dx);
@@ -58,6 +60,8 @@ public class spriteO {
         screenX = (halfNumRays + deltaRays) * scale;
         distance = Math.hypot(dx, dy) * Math.cos(delta);
 
-        spriteProjection(distance, screenX);
+        if (distance > 0.5) {
+            spriteProjection(distance, screenX, gc);
+        }
     }
 }
